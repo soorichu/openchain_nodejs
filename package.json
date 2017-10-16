@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
+  "name": "Soori Home",
   "version": "0.2.6",
-  "description": "A sample Node.js app using Express 4",
+  "description": "I Love Math and GGB and Edu!",
   "engines": {
     "node": "6.11.1"
   },
