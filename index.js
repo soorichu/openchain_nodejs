@@ -17,7 +17,7 @@ app.get('/', function(request, response) {
 
 var page_str = ""
 
-app.get('/'+page_str, function(request, response){
+app.get(__dirname +"/"+page_str, function(request, response){
 	//response.render('pages/'+page_str);
 	response.send("Hello "+ page_str);
 });
