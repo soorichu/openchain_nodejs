@@ -15,11 +15,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-var page_str = ""
-
-app.get(__dirname +"/"+page_str, function(request, response){
+app.get('./openchain', function(request, response){
 	//response.render('pages/'+page_str);
-	response.send("Hello "+ page_str);
+	response.send("Hello openchain " + Date.now());
 });
 
 app.listen(app.get('port'), function() {
