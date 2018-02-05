@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/openchain', function(req, res){
+app.get('/openchain/', function(req, res){
 	res.render('pages/openchian');
 });
 
