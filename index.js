@@ -9,12 +9,17 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+
+
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/openchain/', function(req, res){
-	res.render('pages/openchian');
+var page_str = ""
+
+app.get('/'+page_str, function(request, response){
+	//response.render('pages/'+page_str);
+	response.send("Hello "+ page_str);
 });
 
 app.listen(app.get('port'), function() {
