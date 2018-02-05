@@ -15,9 +15,12 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('./openchain', function(request, response){
-	//response.render('pages/'+page_str);
-	response.send("Hello openchain " + Date.now());
+app.get('/openchain', function(request, response){
+	response.render('pages/openchain')
+});
+
+app.get('/wallet', function(request, response){
+	response.render('pages/wallet')
 });
 
 app.listen(app.get('port'), function() {
