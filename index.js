@@ -43,6 +43,10 @@ app.get("/token-wallet", function(request, response){
 	response.render('pages/token-wallet');
 });
 
+app.get("/site-menu", function(request, response){
+	response.render('pages/site-menu');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
