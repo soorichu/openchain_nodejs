@@ -15,17 +15,38 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/openchain', function(request, response){
-	response.render('pages/openchain')
+app.get('/accounts', function(request, response){
+	response.render('pages/accounts');
 });
 
-app.get('/wallet', function(request, response){
-	response.render('pages/wallet')
+app.get('/ballot', function(request, response){
+	response.render('pages/ballot');
+});
+
+app.get('/blockchain-explorer', function(request, response){
+	response.render('pages/blockchain-explorer');
+});
+
+app.get('/simple-contract', function(request, response){
+	response.render('pages/simple-contract');
+});
+
+app.get('/simple-auction', function(request, response){
+	response.render('pages/simple-auction');
+});
+
+app.get('/tictactoe', function(request, response){
+	response.render('pages/tictactoe');
+});
+
+app.get("/token-wallet", function(request, response){
+	response.render('pages/token-wallet');
 });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
 
 app.get('/times', function(request, response) {
 	var result = '';

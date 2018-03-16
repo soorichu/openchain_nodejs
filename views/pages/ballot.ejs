@@ -1,11 +1,15 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.3/milligram.min.css">
-  </head>
-  <body class="container" style="padding-top: 3%;">
-    <h2><a href="../../index.html">Ethereum Test</a></h2>
-    <h4>Ballot</h4>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
 
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="container">
+<h2>Ballot</h2>
     <hr />
 
     <div id="ballotCreation">
@@ -83,8 +87,6 @@
 
     <br /><br />
 
-    <script type="text/javascript" src="../../public/javascripts/ethereumjs-testrpc.js"></script>
-    <script type="text/javascript" src="../../public/javascripts/ethjs.js"></script>
     <script type="text/javascript">
       var eth = new Eth(TestRPC.provider());
       var el = function(id){ return document.querySelector(id); };
@@ -314,5 +316,7 @@ contract Ballot {
 }
   </code></pre>
 
-    </body>
-  </html>
+</div>
+
+</body>
+</html>
