@@ -70,14 +70,14 @@
       var eth = new Eth(TestRPC.provider());
       var el = function(id){ return document.querySelector(id); };
 
-      /*
+      
       // uncomment to enable MetaMask support:
       if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
         eth.setProvider(window.web3.currentProvider);
       } else {
         eth.setProvider(provider); // set to TestRPC if not available
       }
-      */
+      
 
       eth.accounts().then(function(accounts){
         el('#accountAddress').innerHTML = accounts[0];
@@ -159,7 +159,7 @@
     <br /><br />
 
     <label>HumanStandardToken (EC20)</label>
-    <!--
+    
     <pre><code>
 pragma solidity ^0.4.4;
 
@@ -231,7 +231,7 @@ contract HumanStandardToken {
   event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
     </code></pre>
--->
+
 </div>
 
 </body>
