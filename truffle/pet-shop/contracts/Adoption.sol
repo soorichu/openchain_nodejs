@@ -2,7 +2,7 @@ pragma solidity ^0.4.17;
 
 contract Adaption{
 	
-	address[16 public adopters;
+	address[16] public adopters;
 	function adopt(uint petId) public returns (uint){
 		require(petId >= 0 && petID <= 15);
 		adopters[petID] = msg.sender;
