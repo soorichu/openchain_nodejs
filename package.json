@@ -25,8 +25,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hsoorichu/OpenChain-NodeJS"
-  },
+    "url": "https://github.com/soorichu/OpenChain-NodeJS"
+  }
   "keywords": [
     "node",
     "heroku",

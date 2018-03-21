@@ -25,7 +25,7 @@ function postArticle()
     document.getElementById('title').value, // Title
     document.getElementById('article').value, // Body of post
     // json metadata (additional tags, app name, etc)
-    { tags: ['secondtag'], app: 'steemjs-test!' },
+    { tags: ['posting=by-soori'], app: 'simple-steem-posting' },
     function (err, result) {
       if (err)
         alert('Failure! ' + err);
