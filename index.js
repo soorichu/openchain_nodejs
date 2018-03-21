@@ -47,6 +47,11 @@ app.get("/site-menu", function(request, response){
 	response.render('pages/site-menu');
 });
 
+app.get("/simple-steem", function(request, response){
+	response.render('pages/simple-steem');
+});
+
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
