@@ -6,11 +6,29 @@
 	<% include ../partials/nav.ejs %>
 <div class="container">
 <h2>Steemit API test</h2>
-TAGS : <p id="getTrendingTags"></p>
+Name : <input id="accountName" type="text"><br/>
+password : <input id="password" type="password" size="65"><br/>
+<input id="login" type="button" value="Login" onclick="loginFunction()"><br/><br/>
 
+TAGS : <p id="getTrendingTags"></p>
 <input id="postIt" type="button" value="TEST!" onClick=steemitApiTest>
 
 <script language="JavaScript">
+
+function loginFunction()
+{
+	var { TransactionBuilder, Login } = require("steemjs-lib");
+	var login = new Login();
+	login.setRoles(["posting"]);
+	var loginSuccess = login.checkKeys({
+	    accountName: document.getElementById("accountName").value,
+	    password: document.getElementById("password").value,
+	    auths: {
+	        posting: [["STMpostingAuthKey", 1]]
+	    }}
+	);
+}
+
 function steemitApiTest()
 {
   steem.api.getTrendingTags(afterTag, limit, function(err, result) {
