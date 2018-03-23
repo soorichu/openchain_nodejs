@@ -33,7 +33,13 @@ function steemitApiTest()
 {
   steem.api.getTrendingTags(afterTag, limit, function(err, result) {
     document.getElementById("getTrendingTags").innerHTML = result;
+    if (err)
+        alert('Failure! ' + err);
+    else
+        alert('Success!');
   });
+
+
 
 }
 </script>
