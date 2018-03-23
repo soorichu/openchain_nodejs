@@ -51,6 +51,10 @@ app.get("/simple-steem", function(request, response){
 	response.render('pages/simple-steem');
 });
 
+app.get("/steemit-api-test", function(request, response){
+	response.render('pages/steemit-api-test');
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

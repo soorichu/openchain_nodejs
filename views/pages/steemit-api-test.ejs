@@ -1,0 +1,24 @@
+<html>
+<head>  
+	<% include ../partials/header.ejs %>
+</head>
+<body>
+	<% include ../partials/nav.ejs %>
+<div class="container">
+<h2>Steemit API test</h2>
+TAGS : <p id="getTrendingTags"></p>
+
+<input id="postIt" type="button" value="TEST!" onClick=steemitApiTest>
+
+<script language="JavaScript">
+function steemitApiTest()
+{
+  steem.api.getTrendingTags(afterTag, limit, function(err, result) {
+    document.getElementById("getTrendingTags").setText = result;
+  });
+
+}
+</script>
+</div>
+</body>
+</html>
