@@ -14,7 +14,7 @@ TAGS : <p id="getTrendingTags"></p>
 function steemitApiTest()
 {
   steem.api.getTrendingTags(afterTag, limit, function(err, result) {
-    document.getElementById("getTrendingTags").setText = result;
+    document.getElementById("getTrendingTags").write(result);
   });
 
 }
