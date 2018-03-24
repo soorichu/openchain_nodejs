@@ -1,0 +1,64 @@
+<html>
+<head>  
+	<% include ../partials/header.ejs %>
+</head>
+<body>
+	<% include ../partials/nav.ejs %>
+<div class="container">
+<h2>Steemit API test</h2>
+Name : <input id="name" type="text">
+<input id="clickButton" type="button" value="Your Data" onclick="jsonFunction()"> <input id="clickButton2" type="button" value="Html Parsing" onclick="htmlParsing()"><br/>
+<hr/>
+<div id="all_json">all json</div>
+<div id="userId">user id</div>
+<script language="JavaScript">
+
+function jsonFunction()
+{
+	var steemurl = "https://steemit.com/@"+document.getElementById("name").value+".json";
+	alert(steemurl);
+	var parser = new DOMParser();
+	var json = parser.parseFromString(steemurl, "text/html")
+	alert(json.text());
+
+	
+}
+
+function htmlParsing(){
+	var http = require('http');
+	var cheerio = require('cheerio');
+	  
+	var options = {
+	    hostname: "https://steemit.com/@"+document.getElementById("name").value
+	  };
+	  
+	function handleResponse(response) {
+	  var serverData = '';
+	  response.on('data', function (chunk) {
+	    serverData += chunk;
+	  });
+	  response.on('end', function () {
+	  
+	    var $ = cheerio.load(serverData);
+	  
+	    var result = $(".bash").text();         
+	    var result2 = result.replace(/(^\s+|\s+$)/g, ""); 
+	    alert("Find by class : bash -> " + result2);
+	  
+	    result = $("#AUTHOR").text();  
+	    result2 = result.replace(/(^\s+|\s+$)/g, ""); 
+	    alert("Find by id : AUTHOR -> " + result2);
+	  });
+	}
+	  
+	http.request(options, function(response){
+	  handleResponse(response);
+	}).end();
+
+}
+
+
+</script>
+</div>
+</body>
+</html>
