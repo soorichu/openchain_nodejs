@@ -11,11 +11,14 @@ password : <input id="password" type="password" size="65"><br/>
 <input id="login" type="button" value="Login" onclick="loginFunction()"><br/><br/>
 
 TAGS : <p id="getTrendingTags"></p>
-<input id="postIt" type="button" value="TEST!" onClick=steemitApiTest>
+<input id="postIt" type="button" value="TEST!" onClick="steemitApiTest()"><br/><br/>
 
 <script language="JavaScript">
 
-//	$(document).ready(function() { alert('one'); });
+$(document).ready(function() { 
+	steem.api.setWebSocket("https://steemit.com/@comnic");
+
+ });
 
 
 function loginFunction()
@@ -32,7 +35,7 @@ function loginFunction()
 
 function steemitApiTest()
 {
-  steem.api.getTrendingTags(afterTag, limit, function(err, result) {
+  steem.api.getTrendingTags("*", 10, function(err, result) {
     document.getElementById("getTrendingTags").innerHTML = result;
     alert('steemitApiTest');
     if (err)
