@@ -58,21 +58,18 @@ app.get("/steem-json-parsing", function(request, response){
 });
 
 
-
-app.get('/django_test2', function(resquest, response){
-	var exec = require('child_process').exec;
-	exec('python python_test.py', function(error, stdout, stderr) {
-		response.render('pages/django_test2', {name : "soori", age : "secret", month : 8, day : 19, printpy: stdout});
-	    console.log('stdout: ' + stdout);
-	    console.log('stderr: ' + stderr);
-	    if (error !== null) {
-	        console.log('exec error: ' + error);
-	    }
-	});
-
-	
-
+app.get('/plotly_test', function(resquest, response){
+	response.render('pages/plotly_test');
 });
+
+app.get('/graph_2d', function(resquest, response){
+	response.render('pages/graph_2d');
+});
+
+app.get('/graph_my2d', function(resquest, response){
+	response.render('pages/graph_my2d');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

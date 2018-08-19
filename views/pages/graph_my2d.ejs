@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="container">
+<h2>Plotly TEST</h2>
+<hr/>
+
+<p> This is Plotly TEST</p>
+<div id="graph" style="width:800px;height:600px;"></div>
+
+</div>
+
+<script>
+
+  var n = 1000;
+  var max = 50;
+  var min = -50;
+  var graphs = [
+    {name:'f(x)', data: [{x: [], y: []}]},
+    {name:'g(x)', data: [{x: [], y: []}]},
+    {name:'h(x)', data: [{x: [], y: []}]}
+  ];
+
+  var t = [];
+  for(var i=0; i<n; i++){
+    t = min + (max-min)*i/n;
+    graphs[0].data[0].x[i] = t;
+    graphs[0].data[0].y[i] = t*t;
+  }
+
+  Plotly.plot('graph', [{
+    x: graphs[0].data[0].x,
+    y: graphs[0].data[0].y,
+    line: {simplify:false},
+  }]).then(function(){
+    Plotly.addFrames('graph', graphs);
+  });
+  console.log(Plotly.BUILD)
+
+</script>
+
+</body>
+</html>
