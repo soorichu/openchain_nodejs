@@ -57,6 +57,33 @@ app.get("/steem-json-parsing", function(request, response){
 	response.render('pages/steem-json-parsing');
 });
 
+app.get("/django_test", function(request, response){
+	var spawn = require('child_process').spawn,
+    py    = spawn('python', ['django_site/manage.py']),
+    data = [1,2,3,4,5,6,7,8,9],
+    dataString = '';
+    py.stdout.on('data', function(data){
+	  dataString += data.toString();
+	});
+	py.stdout.on('end', function(){
+	  console.log('Sum of numbers=',dataString);
+	});
+	py.stdin.write(JSON.stringify(data));
+	py.stdin.end();
+		response.render('pages/django_test')
+});
+
+app.get('/django_test2', function(resquest, response){
+	var exec = require('child_process').exec;
+	exec('python python_test.py', function(error, stdout, stderr) {
+	    console.log('stdout: ' + stdout);
+	    console.log('stderr: ' + stderr);
+	    if (error !== null) {
+	        console.log('exec error: ' + error);
+	    }
+	});
+	response.render('pages/django_test2', {name : "soori", age : "secret", month : 8, day : 19})
+});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
