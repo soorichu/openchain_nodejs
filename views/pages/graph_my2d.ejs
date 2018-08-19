@@ -10,41 +10,50 @@
 <% include ../partials/nav.ejs %>
 
 <div class="container">
-<h2>Plotly TEST</h2>
+<h2><%= title %></h2>
 <hr/>
 
-<p> This is Plotly TEST</p>
-<div id="graph" style="width:800px;height:600px;"></div>
+<p> <%= reference %></p>
+  <div class='column column-40'>
+    <div class="row">
+      <label>y= </label>
+      <input type='text' id='yfunc' value="x^2" />
+      <input type='submit' id='submit' value="graph" style="height:40px;" onclick="DrawGraph();" />
+    </div>
+
+  </div>
+
+  <div id="graph" style="height:800px;"></div>
+
 
 </div>
 
 <script>
 
-  var n = 1000;
-  var max = 50;
-  var min = -50;
-  var graphs = [
-    {name:'f(x)', data: [{x: [], y: []}]},
-    {name:'g(x)', data: [{x: [], y: []}]},
-    {name:'h(x)', data: [{x: [], y: []}]}
-  ];
+ function DrawGraph(){
+  var n = 500;
+  var max = 20;
+  var min = -20;
+  var x = 0;
+  var x_value = [];
+  var y_value = [];
+  var y = "x^2";
 
-  var t = [];
   for(var i=0; i<n; i++){
-    t = min + (max-min)*i/n;
-    graphs[0].data[0].x[i] = t;
-    graphs[0].data[0].y[i] = t*t;
+    x = min + (max-min)*i/n;
+    x_value[i] = x;
+    y = document.getElementById('yfunc').value;
+    y_value[i] = eval(y.replace("^", "**"));
+    y = "y="+y;
   }
-
-  Plotly.plot('graph', [{
-    x: graphs[0].data[0].x,
-    y: graphs[0].data[0].y,
-    line: {simplify:false},
-  }]).then(function(){
-    Plotly.addFrames('graph', graphs);
-  });
+  GRAPH = document.getElementById('graph');
+  Plotly.plot(GRAPH, [{
+    x: x_value,
+    y: y_value,
+    name : y
+  }], {ratio: { x: 1, y: 1 }});
   console.log(Plotly.BUILD)
-
+}
 </script>
 
 </body>

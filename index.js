@@ -13,6 +13,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/index', function(request, response) {
+  response.render('pages/index');
+});
 app.get('/accounts', function(request, response){
 	response.render('pages/accounts');
 });
@@ -58,15 +61,15 @@ app.get("/steem-json-parsing", function(request, response){
 });
 
 app.get('/plotly_test', function(resquest, response){
-	response.render('pages/plotly_test');
+	response.render('pages/plotly_test', {title: "Simple Graph", reference:"This is Simple Graph"});
 });
 
 app.get('/graph_2d', function(resquest, response){
-	response.render('pages/graph_2d');
+	response.render('pages/graph_2d', {title: "2D Graph Animation", reference:"This is 2D Graph Animation"});
 });
 
 app.get('/graph_my2d', function(resquest, response){
-	response.render('pages/graph_my2d');
+	response.render('pages/graph_my2d',{title: "My 2D Graph", reference:"You can draw 2D Graph if you input on text-box which is combined by valuable; x."});
 });
 
 app.listen(app.get('port'), function() {
