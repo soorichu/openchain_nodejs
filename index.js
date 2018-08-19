@@ -57,7 +57,6 @@ app.get("/steem-json-parsing", function(request, response){
 	response.render('pages/steem-json-parsing');
 });
 
-
 app.get('/plotly_test', function(resquest, response){
 	response.render('pages/plotly_test');
 });
