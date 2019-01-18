@@ -1,9 +1,14 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
+const app = express();
+const apiKey = "f7d4f11c9c4a72e8bf499ce78803d08a";
 
-app.set('port', (process.env.PORT || 5001));
-
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+
+app.set('port', (process.env.PORT || 5002));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -72,14 +77,39 @@ app.get('/graph_my2d', function(resquest, response){
 	response.render('pages/graph_my2d',{title: "My 2D Graph", reference:"You can draw 2D Graph if you input on text-box which is combined by valuable; x."});
 });
 
+app.get('/openweather', function(resquest, response){
+	let city = 'incheon';//request.body.city;
+	let url = `http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=&{apiKey}`
+
+	request(url, function(error, response, body){
+
+		if(error){
+			response.render('pages/openweather', {weather:"", error:'Error'});
+
+		}else{
+			let weather = JSON.parse(body);
+			if(weather.main == undefined){
+				response.render('pages/openweather', 
+					{title :"Open Weather", reference:"https://www.openweathermap.org", weather:"", error:'Error'});
+			}else{
+				let weatherText = `It's ${weather.main.temp} degree in ${weather.name}!`;
+				response.render('pages/openweather', 
+					{weather:weatherText, error:"", title :"Open Weather", reference:"https://www.openweathermap.org"});
+			}
+		}
+
+	});
+});
+
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
 
 app.get('/times', function(request, response) {
-	var result = '';
-	var times = process.env.TIMES || 5;
+	let result = '';
+	let times = process.env.TIMES || 5;
 	for(i=0; i<times; i++)
 		result += i + ' ';
 	response.send(result);
