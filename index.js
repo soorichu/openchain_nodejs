@@ -77,6 +77,14 @@ app.get('/graph_my2d', function(resquest, response){
 	response.render('pages/graph_my2d',{title: "My 2D Graph", reference:"You can draw 2D Graph if you input on text-box which is combined by valuable; x."});
 });
 
+app.get('/lineplot', function(request, response){
+	response.render('pages/lineplot', {title: "LinePlot by Plotly", reference:"졸리다......."});
+});
+
+app.get('/xlxsgraph', function(request, response){
+	response.render('pages/xlxsgraph', {title: "XLXS to Graph", reference:"아이고......."});
+});
+
 // app.get('/openweather', function(resquest, response){
 // 	let city = 'incheon';//request.body.city;
 // 	let url = `http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=&{apiKey}`
