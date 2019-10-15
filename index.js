@@ -81,8 +81,8 @@ app.get('/lineplot', function(request, response){
 	response.render('pages/lineplot', {title: "LinePlot by Plotly", reference:"졸리다......."});
 });
 
-app.get('/xlxsgraph', function(request, response){
-	response.render('pages/xlxsgraph', {title: "XLXS to Graph", reference:"아이고......."});
+app.get('/xlsxtograph', function(request, response){
+	response.render('pages/xlsxtograph', {title: "XLXS to Graph", reference:"아이고......."});
 });
 
 // app.get('/openweather', function(resquest, response){
