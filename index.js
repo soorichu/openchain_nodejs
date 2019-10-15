@@ -77,29 +77,29 @@ app.get('/graph_my2d', function(resquest, response){
 	response.render('pages/graph_my2d',{title: "My 2D Graph", reference:"You can draw 2D Graph if you input on text-box which is combined by valuable; x."});
 });
 
-app.get('/openweather', function(resquest, response){
-	let city = 'incheon';//request.body.city;
-	let url = `http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=&{apiKey}`
+// app.get('/openweather', function(resquest, response){
+// 	let city = 'incheon';//request.body.city;
+// 	let url = `http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=&{apiKey}`
 
-	request(url, function(error, response, body){
+// 	request(url, function(error, response, body){
 
-		if(error){
-			response.render('pages/openweather', {weather:"", error:'Error'});
+// 		if(error){
+// 			response.render('pages/openweather', {weather:"", error:'Error'});
 
-		}else{
-			let weather = JSON.parse(body);
-			if(weather.main == undefined){
-				response.render('pages/openweather', 
-					{title :"Open Weather", reference:"https://www.openweathermap.org", weather:"", error:'Error'});
-			}else{
-				let weatherText = `It's ${weather.main.temp} degree in ${weather.name}!`;
-				response.render('pages/openweather', 
-					{weather:weatherText, error:"", title :"Open Weather", reference:"https://www.openweathermap.org"});
-			}
-		}
+// 		}else{
+// 			let weather = JSON.parse(body);
+// 			if(weather.main == undefined){
+// 				response.render('pages/openweather', 
+// 					{title :"Open Weather", reference:"https://www.openweathermap.org", weather:"", error:'Error'});
+// 			}else{
+// 				let weatherText = `It's ${weather.main.temp} degree in ${weather.name}!`;
+// 				response.render('pages/openweather', 
+// 					{weather:weatherText, error:"", title :"Open Weather", reference:"https://www.openweathermap.org"});
+// 			}
+// 		}
 
-	});
-});
+// 	});
+// });
 
 
 app.listen(app.get('port'), function() {
