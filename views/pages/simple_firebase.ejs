@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="container">
+<h2><%= title %></h2>
+<hr/>
+
+<p> <%= reference %></p>
+<p id="bigOne">What is Change</p>
+
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDDdIoYqAHCYSXLU-X4ZofVshpETYqmpxg",
+    authDomain: "pygraph-soori.firebaseapp.com",
+    databaseURL: "https://pygraph-soori.firebaseio.com",
+    projectId: "pygraph-soori",
+    storageBucket: "pygraph-soori.appspot.com",
+    messagingSenderId: "596770025416"
+  };
+  firebase.initializeApp(config);
+  var bigOne = document.getElementById('bigOne');
+  var dbRef = firebase.database().ref("dtwoF1bKNWNt6nGCQU33").child('name');
+  dbRef.on('value', snap=> bigOne.innerText = snap.val());
+</script>
+
+</body>
+</html>

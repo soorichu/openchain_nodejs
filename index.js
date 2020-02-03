@@ -85,6 +85,10 @@ app.get('/xlsxtograph', function(request, response){
 	response.render('pages/xlsxtograph', {title: "XLXS to Graph", reference:"아이고......."});
 });
 
+app.get('/kakaomap', function(request, response){
+	response.render('pages/kakaomap', {title: "KaKao Map Api TEST", reference:"되나...."});
+});
+
 // app.get('/openweather', function(resquest, response){
 // 	let city = 'incheon';//request.body.city;
 // 	let url = `http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=&{apiKey}`
@@ -109,6 +113,22 @@ app.get('/xlsxtograph', function(request, response){
 // 	});
 // });
 
+// const { Client } = require('pg');
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true,
+// });
+
+// client.connect();
+
+// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//   if (err) throw err;
+//   for (let row of res.rows) {
+//     console.log(JSON.stringify(row));
+//   }
+//   client.end();
+// });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

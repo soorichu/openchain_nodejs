@@ -24,6 +24,7 @@
     "http": "0.0.0",
     "live-server": "^1.2.0",
     "openweathermap-node": "^1.1.2",
+    "pg": "^7.12.1",
     "port": "^0.8.1",
     "require": "^2.4.20",
     "steemjs-lib": "^0.3.7",
